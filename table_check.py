@@ -24,10 +24,10 @@ def check_column(df1, df2, args):
 def main(args):
     # redshift接続
     driver = "com.amazon.redshift.jdbc42.Driver"
-    host   = "jdbc:redshift://redshift.ap-northeast-1.rls-blt.net:443/capdb?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory"
+    host   = os.environ["HOST"] 
     redshift_id   = os.environ["REDSHIFT_ID"]
     redshift_pass = os.environ["REDSHIFT_PASS"]
-    driver_path   = "/Users/vv002586/RedshiftJDBC42-1.1.17.1017.jar"
+    driver_path   = "RedshiftJDBC42-1.1.17.1017.jar"
     conn = jaydebeapi.connect(driver, host, [redshift_id, redshift_pass], driver_path)
 
     # SQL実行
